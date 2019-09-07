@@ -1,4 +1,4 @@
-# More-Ores
+# More Ores
 Repo for More Mores - A Minecraft mod that adds ores, ingots and dusts to the world with easy ore doubling for 1.14
 
 ## License
