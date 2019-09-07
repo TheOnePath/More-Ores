@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+      	"BA",
+      	"AA"
+  	],
+  	"key":
+  	{
+  		"A": { "item": "moreores:aluminium_ingot" },
+  		"B": { "item": "moreores:brass_ingot" }
+  	},
+  	"result":
+  	{
+  		"item": "moreores:alumbrass_ingot",
+  		"count": 4
+  	}
+}
