@@ -19,6 +19,8 @@ public class ItemList {
 	public static final Item SILVER_ORE = new BlockItem(BlockList.SILVER_ORE, new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(BlockList.SILVER_ORE.getRegistryName());
 	public static final Item TIN_ORE = new BlockItem(BlockList.TIN_ORE, new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(BlockList.TIN_ORE.getRegistryName());
 	public static final Item ZINC_ORE = new BlockItem(BlockList.ZINC_ORE, new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(BlockList.ZINC_ORE.getRegistryName());
+	
+	public static final Item GRINDING_WORKBENCH = new BlockItem(BlockList.GRINDING_WORKBENCH, new Item.Properties().group(creativetab)).setRegistryName(BlockList.GRINDING_WORKBENCH.getRegistryName());
 	// Item
 	public static final Item PULVERISER = new ToolPulveriser(new Item.Properties().group(creativetab).maxStackSize(1)).setRegistryName(new ResourceLocation(id, "pulveriser_tool"));
 	public static final Item ALUM_INGOT = new Item(new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(new ResourceLocation(id, "aluminium_ingot"));
@@ -38,4 +40,6 @@ public class ItemList {
 	public static final Item SILVER_DUST = new Item(new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(new ResourceLocation(id, "silver_dust"));
 	public static final Item TIN_DUST = new Item(new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(new ResourceLocation(id, "tin_dust"));
 	public static final Item ZINC_DUST = new Item(new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(new ResourceLocation(id, "zinc_dust"));
+	public static final Item IRON_DUST = new Item(new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(new ResourceLocation(id, "iron_dust"));
+	public static final Item GOLD_DUST = new Item(new Item.Properties().group(creativetab).maxStackSize(64)).setRegistryName(new ResourceLocation(id, "gold_dust"));
 }

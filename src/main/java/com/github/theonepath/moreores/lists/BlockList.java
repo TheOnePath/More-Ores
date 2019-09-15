@@ -1,9 +1,11 @@
 package com.github.theonepath.moreores.lists;
 
 import com.github.theonepath.moreores.MoreOres;
+import com.github.theonepath.moreores.blocks.GrindingWorkbench;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
 public class BlockList {
@@ -17,5 +19,6 @@ public class BlockList {
 	public static final Block TIN_ORE = new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F)).setRegistryName(id, "tin_ore");
 	public static final Block ZINC_ORE = new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F)).setRegistryName(id, "zinc_ore");
 	
+	public static final Block GRINDING_WORKBENCH = new GrindingWorkbench(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)).setRegistryName(id, "grinding_workbench");	
 }
 
