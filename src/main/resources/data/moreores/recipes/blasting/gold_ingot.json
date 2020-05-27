@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "moreores:gold_chunk"
+  },
+  "result": "minecraft:gold_ingot",
+  "experience": 0.5,
+  "cookingtime": 100
+}

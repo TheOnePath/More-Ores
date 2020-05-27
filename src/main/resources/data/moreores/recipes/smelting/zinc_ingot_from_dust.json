@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "moreores:zinc_dust"
+  },
+  "result": "moreores:zinc_ingot",
+  "experience": 0.5,
+  "cookingtime": 200
+}

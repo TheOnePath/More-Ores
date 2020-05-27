@@ -1,0 +1,12 @@
+{
+	"replace": false,
+	"values":
+	[
+		"moreores:rock_grinder_stone",
+		"moreores:rock_grinder_iron",
+		"moreores:rock_grinder_gold",
+		"moreores:rock_grinder_diamond",
+		"moreores:rock_grinder_emerald",
+		"moreores:rock_grinder_unbreakable"
+	]
+}

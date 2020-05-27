@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "moreores:copper_chunk"
+  },
+  "result": "moreores:copper_ingot",
+  "experience": 0.5,
+  "cookingtime": 100
+}
