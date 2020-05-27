@@ -13,7 +13,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -47,38 +46,54 @@ public class MoreOres {
 		logger.info("Client method registered");
 	}
 	
+	
 	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 	public static class RegistryEvents{
-		
 		@SubscribeEvent
-		public static void registerItems(final RegistryEvent.Register<Item> event) {
-			event.getRegistry().registerAll(
-				// Items
+		public static void registerItems(RegistryEvent.Register<Item> event) {
+			event.getRegistry().registerAll(new Item[] { 
 				ItemList.ALUM_INGOT, ItemList.ALUMBRASS_INGOT, ItemList.BRONZE_INGOT, ItemList.COPPER_INGOT,
-				ItemList.LEAD_INGOT, ItemList.NICKEL_INGOT, ItemList.SILVER_INGOT, ItemList.TIN_INGOT, 
-				ItemList.ZINC_INGOT, ItemList.ALUM_DUST, ItemList.COPPER_DUST, ItemList.LEAD_DUST, 
+				ItemList.LEAD_INGOT, ItemList.NICKEL_INGOT, ItemList.SILVER_INGOT, ItemList.TIN_INGOT,
+				ItemList.ZINC_INGOT, ItemList.ALUM_DUST, ItemList.COPPER_DUST, ItemList.LEAD_DUST,
 				ItemList.NICKEL_DUST, ItemList.SILVER_DUST, ItemList.TIN_DUST, ItemList.ZINC_DUST,
-				ItemList.PULVERISER, ItemList.BRASS_INGOT, ItemList.IRON_DUST, ItemList.GOLD_DUST,
-				// BlockItems
+				ItemList.BRASS_INGOT, ItemList.IRON_DUST, ItemList.GOLD_DUST, ItemList.ALUM_CHUNK,
+				ItemList.COPPER_CHUNK, ItemList.LEAD_CHUNK, ItemList.NICKEL_CHUNK, ItemList.SILVER_CHUNK,
+				ItemList.TIN_CHUNK, ItemList.ZINC_CHUNK, ItemList.IRON_CHUNK, ItemList.GOLD_CHUNK,
+				ItemList.ALUM_NUGGET, ItemList.ALUMBRASS_NUGGET, ItemList.BRASS_NUGGET, ItemList.BRONZE_NUGGET,
+				ItemList.COPPER_NUGGET, ItemList.LEAD_NUGGET, ItemList.NICKEL_NUGGET, ItemList.SILVER_NUGGET,
+				ItemList.TIN_NUGGET, ItemList.ZINC_NUGGET, ItemList.ROCK_GRINDER_STONE, ItemList.ROCK_GRINDER_IRON,
+				ItemList.ROCK_GRINDER_GOLD, ItemList.ROCK_GRINDER_DIAMOND, ItemList.ROCK_GRINDER_EMERALD, ItemList.ROCK_GRINDER_UNBREAKABLE,
 				ItemList.ALUM_ORE, ItemList.COPPER_ORE, ItemList.LEAD_ORE, ItemList.NICKEL_ORE,
-				ItemList.SILVER_ORE, ItemList.TIN_ORE, ItemList.ZINC_ORE, ItemList.GRINDING_WORKBENCH
+				ItemList.SILVER_ORE, ItemList.TIN_ORE, ItemList.ZINC_ORE, ItemList.ALUM,
+				ItemList.ALUM_BRASS, ItemList.BRASS, ItemList.BRONZE, ItemList.COPPER,
+				ItemList.LEAD, ItemList.NICKEL, ItemList.SILVER, ItemList.TIN,
+				ItemList.ZINC
+				}
 			);
-		}
-		
-		@SubscribeEvent
-		public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-			event.getRegistry().registerAll(
-				BlockList.ALUM_ORE, BlockList.COPPER_ORE, BlockList.LEAD_ORE, BlockList.NICKEL_ORE,
-				BlockList.SILVER_ORE, BlockList.TIN_ORE, BlockList.ZINC_ORE, BlockList.GRINDING_WORKBENCH
-			);
-		}
-		
-		@SubscribeEvent
-		public static void registerSounds(final RegistryEvent.Register<SoundEvent> event) {
-			rock_chink = makeRegistrySoundEvent(event, "moreores:rock_chink");
 		}
 
-		private static SoundEvent makeRegistrySoundEvent(Register<SoundEvent> event, String id) {
+		  
+		
+		@SubscribeEvent
+		public static void registerBlocks(RegistryEvent.Register<Block> event) {
+			event.getRegistry().registerAll(new Block[] {
+				BlockList.ALUM_ORE, BlockList.COPPER_ORE, BlockList.LEAD_ORE, BlockList.NICKEL_ORE,
+				BlockList.SILVER_ORE, BlockList.TIN_ORE, BlockList.ZINC_ORE, BlockList.ALUM,
+				BlockList.COPPER, BlockList.LEAD, BlockList.NICKEL, BlockList.SILVER,
+				BlockList.TIN, BlockList.ZINC, BlockList.ALUM_BRASS, BlockList.BRONZE,
+				BlockList.BRASS
+				}
+			);
+		}
+
+
+		
+		@SubscribeEvent
+		public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
+			MoreOres.rock_chink = makeRegistrySoundEvent(event, "moreores:rock_chink");
+		}
+
+		private static SoundEvent makeRegistrySoundEvent(RegistryEvent.Register<SoundEvent> event, String id) {
 			SoundEvent sound_event = new SoundEvent(new ResourceLocation(id));
 		    sound_event.setRegistryName(new ResourceLocation(id));
 		    event.getRegistry().register(sound_event);

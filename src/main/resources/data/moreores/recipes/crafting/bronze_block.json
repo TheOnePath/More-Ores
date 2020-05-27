@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+      	"NNN",
+      	"NNN",
+		"NNN"
+  	],
+  	"key":
+  	{
+  		"N": { "item": "moreores:bronze_ingot" }
+  	},
+  	"result":
+  	{
+  		"item": "moreores:bronze_block",
+  		"count": 1
+  	}
+}

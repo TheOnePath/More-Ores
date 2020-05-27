@@ -1,15 +1,44 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
+	"type": "minecraft:block",
+    "pools": [
+     {
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "moreores:copper_ore"
+          "name": "moreores:copper_chunk",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 3
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:match_tool",
+              "predicate": {
+                "tag": "moreores:tools/rock_grinder"
+              }
+            }
+          ]
+        },
+		{
+          "type": "minecraft:item",
+          "name": "moreores:copper_ore",
+		  "conditions": [
+            {
+              "condition": "minecraft:match_tool",
+              "predicate": {
+                "tag": "moreores:tools/pickaxe"
+              }
+            }
+          ]
         }
       ],
-	   "conditions": [
+      "conditions": [
         {
           "condition": "minecraft:survives_explosion"
         }

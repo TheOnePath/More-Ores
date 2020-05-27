@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients":
+	[
+		{ "item": "moreores:lead_block" }
+	],
+	
+	"result": { "item": "moreores:lead_ingot", "count": 9 }
+}
