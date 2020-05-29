@@ -1,0 +1,12 @@
+{
+    "rock_chink":{
+        "category": "block",
+		"subtitle": "Chink",
+        "sounds": [
+            {
+                "name": "moreores:rock_chink",
+                "stream": false
+           }
+        ]
+    }
+}

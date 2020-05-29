@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+      	"OIO",
+		"ENG",
+		"ODO"
+  	],
+  	"key":
+  	{
+  		"O": { "item": "minecraft:obsidian" },
+  		"N": { "item": "minecraft:nether_star" },
+		"I": { "item": "moreores:rock_grinder_iron" },
+		"G": { "item": "moreores:rock_grinder_gold" },
+		"D": { "item": "moreores:rock_grinder_diamond" },
+		"E": { "item": "moreores:rock_grinder_emerald" }
+  	},
+  	"result":
+  	{
+  		"item": "moreores:rock_grinder_unbreakable",
+  		"count": 1
+  	}
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "moreores:alum_chunk"
+  },
+  "result": "moreores:alum_ingot",
+  "experience": 0.5,
+  "cookingtime": 100
+}

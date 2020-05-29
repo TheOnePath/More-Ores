@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients":
+	[
+		{ "item": "moreores:brass_block" }
+	],
+	
+	"result": { "item": "moreores:brass_ingot", "count": 9 }
+}

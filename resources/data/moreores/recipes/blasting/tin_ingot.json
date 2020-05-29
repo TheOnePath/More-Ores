@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "moreores:tin_chunk"
+  },
+  "result": "moreores:tin_ingot",
+  "experience": 0.5,
+  "cookingtime": 100
+}
