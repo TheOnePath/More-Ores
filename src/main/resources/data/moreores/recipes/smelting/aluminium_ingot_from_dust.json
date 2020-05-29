@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "moreores:alum_dust"
-  },
-  "result": "moreores:alum_ingot",
-  "experience": 0.5,
-  "cookingtime": 200
-}

@@ -1,9 +1,0 @@
-{
-	"type": "minecraft:crafting_shapeless",
-	"ingredients":
-	[
-		{ "item": "moreores:bronze_block" }
-	],
-	
-	"result": { "item": "moreores:bronze_ingot", "count": 9 }
-}

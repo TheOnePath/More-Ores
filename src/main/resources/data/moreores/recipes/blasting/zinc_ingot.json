@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "moreores:zinc_chunk"
-  },
-  "result": "moreores:zinc_ingot",
-  "experience": 0.5,
-  "cookingtime": 100
-}

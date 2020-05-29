@@ -1,9 +1,0 @@
-{
-	"type": "minecraft:crafting_shapeless",
-	"ingredients":
-	[
-		{ "item": "moreores:alum_block" }
-	],
-	
-	"result": { "item": "moreores:alum_ingot", "count": 9 }
-}
