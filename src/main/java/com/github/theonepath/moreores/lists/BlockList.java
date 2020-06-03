@@ -1,32 +1,111 @@
 package com.github.theonepath.moreores.lists;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.OreBlock;
-import net.minecraft.block.material.Material;
+import com.github.theonepath.moreores.blocks.ElectricGenerator;
+import com.github.theonepath.moreores.blocks.Generator;
+import com.github.theonepath.moreores.blocks.PowerBank;
+import com.github.theonepath.moreores.blocks.container.ElectricGeneratorContainer;
+import com.github.theonepath.moreores.blocks.container.GeneratorContainer;
+import com.github.theonepath.moreores.blocks.container.PowerBankContainer;
+import com.github.theonepath.moreores.blocks.metals.AlumBlock;
+import com.github.theonepath.moreores.blocks.metals.AlumBrassBlock;
+import com.github.theonepath.moreores.blocks.metals.BrassBlock;
+import com.github.theonepath.moreores.blocks.metals.BronzeBlock;
+import com.github.theonepath.moreores.blocks.metals.CopperBlock;
+import com.github.theonepath.moreores.blocks.metals.LeadBlock;
+import com.github.theonepath.moreores.blocks.metals.NickelBlock;
+import com.github.theonepath.moreores.blocks.metals.SilverBlock;
+import com.github.theonepath.moreores.blocks.metals.TinBlock;
+import com.github.theonepath.moreores.blocks.metals.ZincBlock;
+import com.github.theonepath.moreores.blocks.ores.*;
+import com.github.theonepath.moreores.blocks.tileentity.ElectricGeneratorTileEntity;
+import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
+import com.github.theonepath.moreores.blocks.tileentity.PowerBankTileEntity;
+import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.registries.ObjectHolder;
 
 
-public class BlockList
-{
-	private static String id = "moreores";
-
-	// Ores
-	public static final Block ALUM_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "alum_ore");
-	public static final Block COPPER_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "copper_ore");
-	public static final Block LEAD_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.1F))).setRegistryName(id, "lead_ore");
-	public static final Block NICKEL_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F))).setRegistryName(id, "nickel_ore");
-	public static final Block SILVER_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.9F))).setRegistryName(id, "silver_ore");
-	public static final Block TIN_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F))).setRegistryName(id, "tin_ore");
-	public static final Block ZINC_ORE = (Block)(new OreBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F))).setRegistryName(id, "zinc_ore");
+public class BlockList {
+	private static final String id = "moreores";
 
 	// Blocks
-	public static final Block ALUM = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "alum_block");
-	public static final Block ALUM_BRASS = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "alumbrass_block");
-	public static final Block BRONZE = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "bronze_block");
-	public static final Block BRASS = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "brass_block");
-	public static final Block COPPER = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F))).setRegistryName(id, "copper_block");
-	public static final Block LEAD = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.1F))).setRegistryName(id, "lead_block");
-	public static final Block NICKEL = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F))).setRegistryName(id, "nickel_block");
-	public static final Block SILVER = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.9F))).setRegistryName(id, "silver_block");
-	public static final Block TIN = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F))).setRegistryName(id, "tin_block");
-	public static final Block ZINC = (Block)(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 2.8F))).setRegistryName(id, "zinc_block");
+	@ObjectHolder(id + ":generator")
+	public static Generator GENERATOR;
+
+	@ObjectHolder(id + ":generator")
+	public static TileEntityType<GeneratorTileEntity> GENERATOR_TILE;
+
+	@ObjectHolder(id + ":generator")
+	public static ContainerType<GeneratorContainer> GENERATOR_CONTAINER;
+
+	@ObjectHolder(id + ":electric_generator")
+	public static ElectricGenerator ELECTRIC_GENERATOR;
+
+	@ObjectHolder(id + ":electric_generator")
+	public static TileEntityType<ElectricGeneratorTileEntity> ELECTRIC_GENERATOR_TILE;
+
+	@ObjectHolder(id + ":electric_generator")
+	public static ContainerType<ElectricGeneratorContainer> ELECTRIC_GENERATOR_CONTAINER;
+
+	@ObjectHolder(id + ":power_bank")
+	public static PowerBank POWERBANK;
+
+	@ObjectHolder(id + ":power_bank")
+	public static TileEntityType<PowerBankTileEntity> POWERBANK_TILE;
+
+	@ObjectHolder(id + ":power_bank")
+	public static ContainerType<PowerBankContainer> POWERBANK_CONTAINER;
+
+	// Ores
+	@ObjectHolder(id + ":alum_ore")
+	public static AlumOre ALUM_ORE;
+
+	@ObjectHolder(id + ":copper_ore")
+	public static CopperOre COPPER_ORE;
+
+	@ObjectHolder(id + ":lead_ore")
+	public static LeadOre LEAD_ORE;
+
+	@ObjectHolder(id + ":nickel_ore")
+	public static NickelOre NICKEL_ORE;
+
+	@ObjectHolder(id + ":silver_ore")
+	public static SilverOre SILVER_ORE;
+
+	@ObjectHolder(id + ":tin_ore")
+	public static TinOre TIN_ORE;
+
+	@ObjectHolder(id + ":zinc_ore")
+	public static ZincOre ZINC_ORE;
+
+	// Blocks
+	@ObjectHolder(id + ":alum_block")
+	public static AlumBlock ALUM_BLOCK;
+
+	@ObjectHolder(id + ":alumbrass_block")
+	public static AlumBrassBlock ALUMBRASS_BLOCK;
+
+	@ObjectHolder(id + ":brass_block")
+	public static BrassBlock BRASS_BLOCK;
+
+	@ObjectHolder(id + ":bronze_block")
+	public static BronzeBlock BRONZE_BLOCK;
+
+	@ObjectHolder(id + ":copper_block")
+	public static CopperBlock COPPER_BLOCK;
+
+	@ObjectHolder(id + ":lead_block")
+	public static LeadBlock LEAD_BLOCK;
+
+	@ObjectHolder(id + ":nickel_block")
+	public static NickelBlock NICKEL_BLOCK;
+
+	@ObjectHolder(id + ":silver_block")
+	public static SilverBlock SILVER_BLOCK;
+
+	@ObjectHolder(id + ":tin_block")
+	public static TinBlock TIN_BLOCK;
+
+	@ObjectHolder(id + ":zinc_block")
+	public static ZincBlock ZINC_BLOCK;
 }
