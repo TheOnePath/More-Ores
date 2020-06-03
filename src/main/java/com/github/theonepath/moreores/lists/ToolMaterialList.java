@@ -6,13 +6,14 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 
 public enum ToolMaterialList implements IItemTier {
-	rock_grinder_stone_material(-1.0F, 6.0F, 131, 1, 25, ItemList.ROCK_GRINDER_STONE),
-	rock_grinder_iron_material(-1.0F, 8.0F, 250, 2, 28, ItemList.ROCK_GRINDER_IRON),
-	rock_grinder_gold_material(-1.0F, 12.0F, 32, 2, 28, ItemList.ROCK_GRINDER_GOLD),
-	rock_grinder_diamond_material(-1.0F, 9.0F, 1561, 3, 30, ItemList.ROCK_GRINDER_DIAMOND),
-	rock_grinder_emerald_material(-1.0F, 14.0F, 2015, 3, 30, ItemList.ROCK_GRINDER_EMERALD),
-	rock_grinder_unbreakable_material(-1.0F, 20.0F, -1, 3, 30, ItemList.ROCK_GRINDER_UNBREAKABLE);
-  
+
+	rock_grinder_stone_material(-1.0F, 6.0F, 131, 1, 25, ToolList.ROCK_GRINDER_STONE),
+	rock_grinder_iron_material(-1.0F, 8.0F, 250, 2, 28, ToolList.ROCK_GRINDER_IRON),
+	rock_grinder_gold_material(-1.0F, 12.0F, 32, 2, 28, ToolList.ROCK_GRINDER_GOLD),
+	rock_grinder_diamond_material(-1.0F, 9.0F, 1561, 3, 30, ToolList.ROCK_GRINDER_DIAMOND),
+	rock_grinder_emerald_material(-1.0F, 14.0F, 2015, 3, 30, ToolList.ROCK_GRINDER_EMERALD),
+	rock_grinder_unbreakable_material(-1.0F, 20.0F, -1, 3, 30, ToolList.ROCK_GRINDER_UNBREAKABLE);
+
 	private float attackDamage;
 	private float efficiency;
 	private int durability;
