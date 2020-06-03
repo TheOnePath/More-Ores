@@ -1,5 +1,12 @@
 {
 	"itemGroup.moreOres": "More Ores",
+
+	"container.moreores.generator": "Coke Generator",
+	"container.moreores.electric_generator": "Electric Generator",
+
+	"item.moreores.battery": "Battery",
+	"item.moreores.capacitor": "Capacitor",
+	"item.moreores.coke": "Coke",
 	
 	"item.moreores.rock_grinder_stone": "Stone Rock Grinder",
 	"item.moreores.rock_grinder_iron": "Iron Rock Grinder",
@@ -67,5 +74,9 @@
 	"block.moreores.nickel_block": "Block of Nickel",
 	"block.moreores.silver_block": "Block of Silver",
 	"block.moreores.tin_block": "Block of Tin",
-	"block.moreores.zinc_block": "Block of Zinc"
+	"block.moreores.zinc_block": "Block of Zinc",
+
+	"block.moreores.generator": "Coke Generator",
+	"block.moreores.electric_generator": "Electric Generator",
+	"block.moreores.power_bank": "Power Bank"
 }
