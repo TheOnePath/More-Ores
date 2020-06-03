@@ -3,7 +3,7 @@ loaderVersion="[31,)"
 issueTrackerURL="http://github.com/TheOnePath/More-Ores/issues"
 [[mods]]
 modId="moreores"
-version="2.0.1"
+version="2.2.1"
 displayName="More Ores"
 #displayURL="http://github.com/TheOnePath/More-Ores"
 credits="Thanks to the modding community"
@@ -20,6 +20,6 @@ Add more ore generation to the world and easy ore doubling to 1.15
 [[dependencies.moreores]]
     modId="minecraft"
     mandatory=true
-    versionRange="1.15.2"
+    versionRange="[1.15,)"
     ordering="NONE"
     side="BOTH"
