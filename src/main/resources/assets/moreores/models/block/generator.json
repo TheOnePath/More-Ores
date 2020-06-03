@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particles": "moreores:blocks/generator",
+        "down": "moreores:blocks/generator",
+        "up": "moreores:blocks/generator",
+        "east": "moreores:blocks/generator",
+        "west": "moreores:blocks/generator",
+        "north": "moreores:blocks/generator_front",
+        "south": "moreores:blocks/generator"
+    }
+}
