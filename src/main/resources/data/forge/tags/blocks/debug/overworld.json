@@ -11,13 +11,6 @@
 		"minecraft:andesite",
 		"minecraft:diorite",
 		"minecraft:cobblestone",
-		"minecraft:obsidian",
-		"minecraft:acacia_logs",
-		"minecraft:oak_logs",
-		"minecraft:dark_oak_logs",
-		"minecraft:birch_logs",
-		"minecraft:jungle_logs",
-		"minecraft:spruce_logs",
-		"minecraft:leaves"
+		"minecraft:obsidian"
 	]
 }
