@@ -1,13 +1,17 @@
 package com.github.theonepath.moreores;
 
+import com.github.theonepath.moreores.blocks.ElectricBlastFurnace;
 import com.github.theonepath.moreores.blocks.ElectricGenerator;
 import com.github.theonepath.moreores.blocks.Generator;
 import com.github.theonepath.moreores.blocks.PowerBank;
+import com.github.theonepath.moreores.blocks.container.ElectricBlastFurnaceContainer;
 import com.github.theonepath.moreores.blocks.container.ElectricGeneratorContainer;
 import com.github.theonepath.moreores.blocks.container.GeneratorContainer;
 import com.github.theonepath.moreores.blocks.container.PowerBankContainer;
 import com.github.theonepath.moreores.blocks.metals.*;
 import com.github.theonepath.moreores.blocks.ores.*;
+import com.github.theonepath.moreores.blocks.tileentity.ElectricBlastFurnaceTileEntity;
+import com.github.theonepath.moreores.blocks.tileentity.ElectricGeneratorTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.PowerBankTileEntity;
 import com.github.theonepath.moreores.items.fuels.Coke;
@@ -91,7 +95,7 @@ public class MoreOres {
 					new CopperBlock(), new LeadBlock(), new NickelBlock(), new SilverBlock(),
 					new TinBlock(), new ZincBlock(),
 					// Blocks
-					new Generator(), new ElectricGenerator(), new PowerBank()
+					new Generator(), new ElectricGenerator(), new PowerBank(), new ElectricBlastFurnace()
 			);
 		}
 
@@ -102,29 +106,29 @@ public class MoreOres {
 					.group(setup.itemGroup);
 			event.getRegistry().registerAll(
 					// Ores
-					new BlockItem(BlockList.ALUM_ORE,   	 	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ALUM_ORE.getRegistryName())),
-					new BlockItem(BlockList.COPPER_ORE, 	 	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.COPPER_ORE.getRegistryName())),
-					new BlockItem(BlockList.LEAD_ORE,   	 	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.LEAD_ORE.getRegistryName())),
-					new BlockItem(BlockList.NICKEL_ORE, 	 	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.NICKEL_ORE.getRegistryName())),
-					new BlockItem(BlockList.SILVER_ORE, 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.SILVER_ORE.getRegistryName())),
-					new BlockItem(BlockList.TIN_ORE,   			new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.TIN_ORE.getRegistryName())),
-					new BlockItem(BlockList.ZINC_ORE,   	 	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ZINC_ORE.getRegistryName())),
+					new BlockItem(BlockList.ALUM_ORE,   	 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ALUM_ORE.getRegistryName())),
+					new BlockItem(BlockList.COPPER_ORE, 	 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.COPPER_ORE.getRegistryName())),
+					new BlockItem(BlockList.LEAD_ORE,   	 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.LEAD_ORE.getRegistryName())),
+					new BlockItem(BlockList.NICKEL_ORE, 	 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.NICKEL_ORE.getRegistryName())),
+					new BlockItem(BlockList.SILVER_ORE, 			new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.SILVER_ORE.getRegistryName())),
+					new BlockItem(BlockList.TIN_ORE,   				new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.TIN_ORE.getRegistryName())),
+					new BlockItem(BlockList.ZINC_ORE,   	 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ZINC_ORE.getRegistryName())),
 					// Metals
-					new BlockItem(BlockList.ALUM_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ALUM_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.ALUMBRASS_BLOCK, 	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ALUMBRASS_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.BRASS_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.BRASS_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.BRONZE_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.BRONZE_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.COPPER_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.COPPER_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.LEAD_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.LEAD_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.NICKEL_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.NICKEL_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.SILVER_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.SILVER_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.TIN_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.TIN_BLOCK.getRegistryName())),
-					new BlockItem(BlockList.ZINC_BLOCK,      	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ZINC_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.ALUM_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ALUM_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.ALUMBRASS_BLOCK, 		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ALUMBRASS_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.BRASS_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.BRASS_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.BRONZE_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.BRONZE_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.COPPER_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.COPPER_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.LEAD_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.LEAD_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.NICKEL_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.NICKEL_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.SILVER_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.SILVER_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.TIN_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.TIN_BLOCK.getRegistryName())),
+					new BlockItem(BlockList.ZINC_BLOCK,      		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ZINC_BLOCK.getRegistryName())),
 					//Blocks
-					new BlockItem(BlockList.GENERATOR,			new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.GENERATOR.getRegistryName())),
-					new BlockItem(BlockList.ELECTRIC_GENERATOR,	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ELECTRIC_GENERATOR.getRegistryName())),
-					new BlockItem(BlockList.POWERBANK,			new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.POWERBANK.getRegistryName())),
-
+					new BlockItem(BlockList.GENERATOR,				new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.GENERATOR.getRegistryName())),
+					new BlockItem(BlockList.ELECTRIC_GENERATOR,		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ELECTRIC_GENERATOR.getRegistryName())),
+					new BlockItem(BlockList.POWERBANK,				new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.POWERBANK.getRegistryName())),
+					new BlockItem(BlockList.ELECTRIC_BLAST_FURNACE,	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ELECTRIC_BLAST_FURNACE.getRegistryName())),
 
 					// Items
 					new Coke(), ItemList.BATTERY, ItemList.CAPACITOR, ItemList.COPPER_PLATE,
@@ -151,8 +155,9 @@ public class MoreOres {
 		@SubscribeEvent
 		public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
 			event.getRegistry().register(TileEntityType.Builder.create(GeneratorTileEntity::new, BlockList.GENERATOR).build(null).setRegistryName("generator"));
-			event.getRegistry().register(TileEntityType.Builder.create(GeneratorTileEntity::new, BlockList.ELECTRIC_GENERATOR).build(null).setRegistryName("electric_generator"));
+			event.getRegistry().register(TileEntityType.Builder.create(ElectricGeneratorTileEntity::new, BlockList.ELECTRIC_GENERATOR).build(null).setRegistryName("electric_generator"));
 			event.getRegistry().register(TileEntityType.Builder.create(PowerBankTileEntity::new, BlockList.POWERBANK).build(null).setRegistryName("power_bank"));
+			event.getRegistry().register(TileEntityType.Builder.create(ElectricBlastFurnaceTileEntity::new, BlockList.ELECTRIC_BLAST_FURNACE).build(null).setRegistryName("electric_blast_furnace"));
 		}
 
 
@@ -170,6 +175,10 @@ public class MoreOres {
 				BlockPos pos = data.readBlockPos();
 				return new PowerBankContainer(windowId, MoreOres.proxy.getClientWorld() , pos, inv, MoreOres.proxy.getClientPlayer());
 			}).setRegistryName("power_bank"));
+			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+				BlockPos pos = data.readBlockPos();
+				return new ElectricBlastFurnaceContainer(windowId, MoreOres.proxy.getClientWorld() , pos, inv, MoreOres.proxy.getClientPlayer());
+			}).setRegistryName("electric_blast_furnace"));
 		}
 
 
