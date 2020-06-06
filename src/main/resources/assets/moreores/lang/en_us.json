@@ -3,6 +3,7 @@
 
 	"container.moreores.generator": "Coke Generator",
 	"container.moreores.electric_generator": "Electric Generator",
+	"container.moreores.electric_blast_furnace": "Electric Blast Furnace",
 
 	"item.moreores.battery": "Battery",
 	"item.moreores.capacitor": "Capacitor",
@@ -78,5 +79,6 @@
 
 	"block.moreores.generator": "Coke Generator",
 	"block.moreores.electric_generator": "Electric Generator",
-	"block.moreores.power_bank": "Power Bank"
+	"block.moreores.power_bank": "Power Bank",
+	"block.moreores.electric_blast_furnace": "Electric Blast Furnace"
 }
