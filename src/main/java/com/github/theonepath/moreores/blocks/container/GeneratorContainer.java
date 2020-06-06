@@ -28,7 +28,6 @@ public class GeneratorContainer extends Container {
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
 
-
     public GeneratorContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
         super(GENERATOR_CONTAINER, windowId);
         tileEntity = world.getTileEntity(pos);
