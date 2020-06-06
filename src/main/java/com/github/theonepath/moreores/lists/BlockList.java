@@ -1,8 +1,10 @@
 package com.github.theonepath.moreores.lists;
 
+import com.github.theonepath.moreores.blocks.ElectricBlastFurnace;
 import com.github.theonepath.moreores.blocks.ElectricGenerator;
 import com.github.theonepath.moreores.blocks.Generator;
 import com.github.theonepath.moreores.blocks.PowerBank;
+import com.github.theonepath.moreores.blocks.container.ElectricBlastFurnaceContainer;
 import com.github.theonepath.moreores.blocks.container.ElectricGeneratorContainer;
 import com.github.theonepath.moreores.blocks.container.GeneratorContainer;
 import com.github.theonepath.moreores.blocks.container.PowerBankContainer;
@@ -17,6 +19,7 @@ import com.github.theonepath.moreores.blocks.metals.SilverBlock;
 import com.github.theonepath.moreores.blocks.metals.TinBlock;
 import com.github.theonepath.moreores.blocks.metals.ZincBlock;
 import com.github.theonepath.moreores.blocks.ores.*;
+import com.github.theonepath.moreores.blocks.tileentity.ElectricBlastFurnaceTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.ElectricGeneratorTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.PowerBankTileEntity;
@@ -55,6 +58,15 @@ public class BlockList {
 
 	@ObjectHolder(id + ":power_bank")
 	public static ContainerType<PowerBankContainer> POWERBANK_CONTAINER;
+
+	@ObjectHolder(id + ":electric_blast_furnace")
+	public static ElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
+
+	@ObjectHolder(id + ":electric_blast_furnace")
+	public static TileEntityType<ElectricBlastFurnaceTileEntity> ELECTRIC_BLAST_FURNACE_TILE;
+
+	@ObjectHolder(id + ":electric_blast_furnace")
+	public static ContainerType<ElectricBlastFurnaceContainer> ELECTRIC_BLAST_FURNACE_CONTAINER;
 
 	// Ores
 	@ObjectHolder(id + ":alum_ore")
