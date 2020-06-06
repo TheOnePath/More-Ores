@@ -37,6 +37,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.github.theonepath.moreores.Config.GENERATOR_MAXPOWER;
+import static com.github.theonepath.moreores.Config.eGENERATOR_MAXPOWER;
 
 public class GeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
@@ -58,11 +59,10 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
 
         energy.ifPresent(m -> {
             BlockState blockState = world.getBlockState(pos);
-            BlockState defaultBlockState = blockState;
             if (m.getEnergyStored() < GENERATOR_MAXPOWER.get()) {
                 if (tickCounter > 0) {
                     tickCounter--;
-                    energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((Config.GENERATOR_GENERATE.get() / Config.GENERATOR_TICKS.get()) - randomLoss()));
+                    energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((Config.GENERATOR_GENERATE.get() / Config.GENERATOR_TICKS.get()) /*- randomLoss()*/));
                     markDirty();
                 }
                 if (tickCounter <= 0) {
@@ -75,13 +75,8 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
                         }
                     });
                 }
-
                 if (blockState.get(BlockStateProperties.POWERED) != tickCounter > 0) {
                     world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, tickCounter > 0), 3);
-                }
-            } else {
-                if (blockState.get(BlockStateProperties.POWERED)) {
-                    world.setBlockState(pos, defaultBlockState);
                 }
             }
         });
