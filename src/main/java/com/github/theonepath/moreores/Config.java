@@ -14,9 +14,11 @@ public class Config {
 
     public static final String CATEGORY_GENERAL = "general";
     public static final String CATEGORY_POWER = "power";
+    public static final String CATEGORY_SMELTING = "Smelting";
     public static final String SUBCATEGORY_GENERATOR = "generator";
     public static final String SUBCATEGORY_eGENERATOR = "electricGenerator";
     public static final String SUBCATEGORY_POWERBANK = "powerBank";
+    public static final String SUBCATEGORY_ELECTRIC_BLAST_FURNACE = "electricBlastFurnace";
 
     private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
@@ -28,6 +30,7 @@ public class Config {
     public static ForgeConfigSpec.IntValue GENERATOR_GENERATE;
     public static ForgeConfigSpec.IntValue GENERATOR_SEND;
     public static ForgeConfigSpec.IntValue GENERATOR_TICKS;
+
     public static ForgeConfigSpec.IntValue eGENERATOR_MAXPOWER;
     public static ForgeConfigSpec.IntValue eGENERATOR_GENERATE;
     public static ForgeConfigSpec.IntValue eGENERATOR_SEND;
@@ -36,12 +39,19 @@ public class Config {
     public static ForgeConfigSpec.IntValue POWERBANK_MAXPOWER;
     public static ForgeConfigSpec.IntValue POWERBANK_IO;
 
+    public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_MAXPOWER;
+    public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_TICKS;
+    public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_CONSUMPTION;
+
 
     static {
         COMMON_BUILDER.comment("General settings").push(CATEGORY_GENERAL);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Power settings").push(CATEGORY_POWER);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("Smelting settings").push(CATEGORY_SMELTING);
 
         setupGeneratorConfig();
 
@@ -77,6 +87,14 @@ public class Config {
                 .defineInRange("maxPower", 500000, 0, Integer.MAX_VALUE);
         POWERBANK_IO = COMMON_BUILDER.comment("Power transfer amount per tick (I/O)")
                 .defineInRange("transfer", 200, 0, Integer.MAX_VALUE);
+
+        COMMON_BUILDER.comment("Power Bank settings").push(SUBCATEGORY_ELECTRIC_BLAST_FURNACE);
+        ELECTRIC_BLAST_FURNACE_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Power Bank")
+                .defineInRange("maxPower", 1000000, 0, Integer.MAX_VALUE);
+        ELECTRIC_BLAST_FURNACE_TICKS = COMMON_BUILDER.comment("Number of ticks to smelt and item")
+                .defineInRange("ticks", 800, 0, Integer.MAX_VALUE);
+        ELECTRIC_BLAST_FURNACE_CONSUMPTION = COMMON_BUILDER.comment("Energy consuption per tick")
+                .defineInRange("consumption", 2, 0, Integer.MAX_VALUE);
 
         COMMON_BUILDER.pop();
     }
