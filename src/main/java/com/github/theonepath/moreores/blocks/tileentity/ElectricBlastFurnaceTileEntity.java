@@ -33,12 +33,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 
-public class ElectricBlastFurnaceTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider, IEnergyStorage {
+public class ElectricBlastFurnaceTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
     private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
 
     public static final int SIZE = 4;
+    public static boolean canReceive = true;
     private int tickCounter;
 
     public ElectricBlastFurnaceTileEntity() {
@@ -131,36 +132,6 @@ public class ElectricBlastFurnaceTileEntity extends TileEntity implements ITicka
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity entity) {
         return new ElectricBlastFurnaceContainer(i, world, pos, inventory, entity);
-    }
-
-    @Override
-    public int receiveEnergy(int maxReceive, boolean simulate) {
-        return maxReceive;
-    }
-
-    @Override
-    public int extractEnergy(int maxExtract, boolean simulate) {
-        return 0;
-    }
-
-    @Override
-    public int getEnergyStored() {
-        return getEnergyStored();
-    }
-
-    @Override
-    public int getMaxEnergyStored() {
-        return getMaxEnergyStored();
-    }
-
-    @Override
-    public boolean canExtract() {
-        return false;
-    }
-
-    @Override
-    public boolean canReceive() {
-        return true;
     }
 }
 
