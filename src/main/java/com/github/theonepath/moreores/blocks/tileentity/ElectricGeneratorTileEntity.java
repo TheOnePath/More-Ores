@@ -58,7 +58,8 @@ public class ElectricGeneratorTileEntity extends TileEntity implements ITickable
             if (m.getEnergyStored() < eGENERATOR_MAXPOWER.get()) {
                 if (tickCounter > 0) {
                     tickCounter--;
-                    energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((Config.eGENERATOR_GENERATE.get() / Config.eGENERATOR_TICKS.get())));
+                    energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((Config.eGENERATOR_GENERATE.get())));
+
                     markDirty();
                 }
                 if (tickCounter <= 0) {
@@ -67,6 +68,7 @@ public class ElectricGeneratorTileEntity extends TileEntity implements ITickable
                         if (stack.getItem() == ItemList.COKE) {
                             h.extractItem(0, 1, false);
                             tickCounter = Config.eGENERATOR_TICKS.get();
+
                             markDirty();
                         }
                     });
@@ -87,12 +89,17 @@ public class ElectricGeneratorTileEntity extends TileEntity implements ITickable
             if (capacity.get() > 0) {
                 for (Direction direction : Direction.values()) {
                     TileEntity tileEntity = world.getTileEntity(pos.offset(direction));
-                    if (tileEntity != null) {
+                    if (tileEntity != null && !(tileEntity instanceof ElectricGeneratorTileEntity)) {
                         boolean doContinue = tileEntity.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
                             if (handler.canReceive()) {
                                 int received = handler.receiveEnergy(Math.min(capacity.get(), Config.eGENERATOR_SEND.get()), false);
+                                if (handler.getEnergyStored() < handler.getMaxEnergyStored()) {
+                                    ((CustomEnergyStorage) handler).addEnergy(received);
+                                }
+
                                 capacity.addAndGet(-received);
                                 ((CustomEnergyStorage) energy).consumeEnergy(received);
+
                                 markDirty();
                                 return capacity.get() > 0;
                             } else {

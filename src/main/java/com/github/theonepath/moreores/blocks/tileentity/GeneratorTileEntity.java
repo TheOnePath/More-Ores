@@ -62,7 +62,7 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
             if (m.getEnergyStored() < GENERATOR_MAXPOWER.get()) {
                 if (tickCounter > 0) {
                     tickCounter--;
-                    energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((Config.GENERATOR_GENERATE.get() / Config.GENERATOR_TICKS.get()) /*- randomLoss()*/));
+                    energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((Config.GENERATOR_GENERATE.get()) /*- randomLoss()*/));
                     markDirty();
                 }
                 if (tickCounter <= 0) {
@@ -95,18 +95,24 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
             if (capacity.get() > 0) {
                 for (Direction direction : Direction.values()) {
                     TileEntity tileEntity = world.getTileEntity(pos.offset(direction));
-                    if (tileEntity != null) {
+                    if (tileEntity != null && !(tileEntity instanceof ElectricGeneratorTileEntity)) {
                         boolean doContinue = tileEntity.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
                             if (handler.canReceive()) {
                                 int received = handler.receiveEnergy(Math.min(capacity.get(), Config.GENERATOR_SEND.get()), false);
+                                if (handler.getEnergyStored() < handler.getMaxEnergyStored()) {
+                                    ((CustomEnergyStorage) handler).addEnergy(received);
+                                }
+
                                 capacity.addAndGet(-received);
                                 ((CustomEnergyStorage) energy).consumeEnergy(received);
+
                                 markDirty();
                                 return capacity.get() > 0;
                             } else {
                                 return true;
                             }
                         }
+
                         ).orElse(true);
                         if (!doContinue) {
                             return;
