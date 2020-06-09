@@ -37,7 +37,7 @@ public class Config {
     public static ForgeConfigSpec.IntValue eGENERATOR_TICKS;
 
     public static ForgeConfigSpec.IntValue POWERBANK_MAXPOWER;
-    public static ForgeConfigSpec.IntValue POWERBANK_IO;
+    public static ForgeConfigSpec.IntValue POWERBANK_SEND;
 
     public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_MAXPOWER;
     public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_TICKS;
@@ -64,9 +64,9 @@ public class Config {
     private static void setupGeneratorConfig() {
         COMMON_BUILDER.comment("Generator settings").push(SUBCATEGORY_GENERATOR);
         GENERATOR_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Generator")
-                .defineInRange("maxPower", 20000, 0, Integer.MAX_VALUE);
+                .defineInRange("maxPower", 50000, 0, Integer.MAX_VALUE);
         GENERATOR_GENERATE = COMMON_BUILDER.comment("Generation power per coke")
-                .defineInRange("generate", 5000, 0, Integer.MAX_VALUE);
+                .defineInRange("generate", 10, 0, Integer.MAX_VALUE);
         GENERATOR_SEND = COMMON_BUILDER.comment("Power generation to send per tick")
                 .defineInRange("send", 50, 0, Integer.MAX_VALUE);
         GENERATOR_TICKS = COMMON_BUILDER.comment("Number of ticks required per coke")
@@ -76,24 +76,24 @@ public class Config {
         eGENERATOR_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Electric Generator")
                 .defineInRange("maxPower", 50000, 0, Integer.MAX_VALUE);
         eGENERATOR_GENERATE = COMMON_BUILDER.comment("Generation power per coke")
-                .defineInRange("generate", 6000, 0, Integer.MAX_VALUE);
+                .defineInRange("generate", 20, 0, Integer.MAX_VALUE);
         eGENERATOR_SEND = COMMON_BUILDER.comment("Power generation to send per tick")
                 .defineInRange("send", 100, 0, Integer.MAX_VALUE);
         eGENERATOR_TICKS = COMMON_BUILDER.comment("Number of ticks required per coke")
-                .defineInRange("ticks", 800, 0, Integer.MAX_VALUE);
+                .defineInRange("ticks", 750, 0, Integer.MAX_VALUE);
 
         COMMON_BUILDER.comment("Power Bank settings").push(SUBCATEGORY_POWERBANK);
         POWERBANK_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Power Bank")
                 .defineInRange("maxPower", 500000, 0, Integer.MAX_VALUE);
-        POWERBANK_IO = COMMON_BUILDER.comment("Power transfer amount per tick (I/O)")
+        POWERBANK_SEND = COMMON_BUILDER.comment("Power to transfer per tick")
                 .defineInRange("transfer", 200, 0, Integer.MAX_VALUE);
 
-        COMMON_BUILDER.comment("Power Bank settings").push(SUBCATEGORY_ELECTRIC_BLAST_FURNACE);
+        COMMON_BUILDER.comment("Electric Blast Furnace settings").push(SUBCATEGORY_ELECTRIC_BLAST_FURNACE);
         ELECTRIC_BLAST_FURNACE_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Power Bank")
-                .defineInRange("maxPower", 1000000, 0, Integer.MAX_VALUE);
+                .defineInRange("maxPower", 100000, 0, Integer.MAX_VALUE);
         ELECTRIC_BLAST_FURNACE_TICKS = COMMON_BUILDER.comment("Number of ticks to smelt and item")
                 .defineInRange("ticks", 800, 0, Integer.MAX_VALUE);
-        ELECTRIC_BLAST_FURNACE_CONSUMPTION = COMMON_BUILDER.comment("Energy consuption per tick")
+        ELECTRIC_BLAST_FURNACE_CONSUMPTION = COMMON_BUILDER.comment("Energy consumption per tick")
                 .defineInRange("consumption", 2, 0, Integer.MAX_VALUE);
 
         COMMON_BUILDER.pop();
