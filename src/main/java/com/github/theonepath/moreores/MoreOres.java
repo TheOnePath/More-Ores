@@ -23,6 +23,7 @@ import com.github.theonepath.moreores.setup.ModSetup;
 import com.github.theonepath.moreores.setup.ServerProxy;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -81,7 +82,7 @@ public class MoreOres {
 		logger.info("Setup method registered");
 	}
 
-	
+
 	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 	public static class RegistryEvents{
 		@SubscribeEvent
@@ -95,7 +96,7 @@ public class MoreOres {
 					new CopperBlock(), new LeadBlock(), new NickelBlock(), new SilverBlock(),
 					new TinBlock(), new ZincBlock(),
 					// Blocks
-					new Generator(), new ElectricGenerator(), new PowerBank(), new ElectricBlastFurnace()
+					new Generator(), new ElectricGenerator(), new ElectricBlastFurnace(), new PowerBank()
 			);
 		}
 
@@ -127,8 +128,8 @@ public class MoreOres {
 					//Blocks
 					new BlockItem(BlockList.GENERATOR,				new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.GENERATOR.getRegistryName())),
 					new BlockItem(BlockList.ELECTRIC_GENERATOR,		new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ELECTRIC_GENERATOR.getRegistryName())),
-					new BlockItem(BlockList.POWERBANK,				new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.POWERBANK.getRegistryName())),
 					new BlockItem(BlockList.ELECTRIC_BLAST_FURNACE,	new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.ELECTRIC_BLAST_FURNACE.getRegistryName())),
+					new BlockItem(BlockList.POWERBANK, 				new Item.Properties().group(setup.itemGroup)).setRegistryName(Objects.requireNonNull(BlockList.POWERBANK.getRegistryName())),
 
 					// Items
 					new Coke(), ItemList.BATTERY, ItemList.CAPACITOR, ItemList.COPPER_PLATE,
@@ -156,8 +157,8 @@ public class MoreOres {
 		public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
 			event.getRegistry().register(TileEntityType.Builder.create(GeneratorTileEntity::new, BlockList.GENERATOR).build(null).setRegistryName("generator"));
 			event.getRegistry().register(TileEntityType.Builder.create(ElectricGeneratorTileEntity::new, BlockList.ELECTRIC_GENERATOR).build(null).setRegistryName("electric_generator"));
-			event.getRegistry().register(TileEntityType.Builder.create(PowerBankTileEntity::new, BlockList.POWERBANK).build(null).setRegistryName("power_bank"));
 			event.getRegistry().register(TileEntityType.Builder.create(ElectricBlastFurnaceTileEntity::new, BlockList.ELECTRIC_BLAST_FURNACE).build(null).setRegistryName("electric_blast_furnace"));
+			event.getRegistry().register(TileEntityType.Builder.create(PowerBankTileEntity::new, BlockList.POWERBANK).build(null).setRegistryName("power_bank"));
 		}
 
 
@@ -173,12 +174,13 @@ public class MoreOres {
 			}).setRegistryName("electric_generator"));
 			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
 				BlockPos pos = data.readBlockPos();
-				return new PowerBankContainer(windowId, MoreOres.proxy.getClientWorld() , pos, inv, MoreOres.proxy.getClientPlayer());
-			}).setRegistryName("power_bank"));
-			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
-				BlockPos pos = data.readBlockPos();
 				return new ElectricBlastFurnaceContainer(windowId, MoreOres.proxy.getClientWorld() , pos, inv, MoreOres.proxy.getClientPlayer());
 			}).setRegistryName("electric_blast_furnace"));
+			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+				BlockPos pos = data.readBlockPos();
+				return new PowerBankContainer(windowId, MoreOres.proxy.getClientWorld(), pos, inv, MoreOres.proxy.getClientPlayer());
+			}).setRegistryName("power_bank")
+			);
 		}
 
 

@@ -3,7 +3,6 @@ package com.github.theonepath.moreores.setup;
 import com.github.theonepath.moreores.blocks.gui.ElectricBlastFurnaceScreen;
 import com.github.theonepath.moreores.blocks.gui.ElectricGeneratorScreen;
 import com.github.theonepath.moreores.blocks.gui.GeneratorScreen;
-import com.github.theonepath.moreores.blocks.gui.PowerBankScreen;
 import com.github.theonepath.moreores.lists.BlockList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -16,7 +15,6 @@ public class ClientProxy implements IProxy{
     public void init() {
         ScreenManager.registerFactory(BlockList.GENERATOR_CONTAINER, GeneratorScreen::new);
         ScreenManager.registerFactory(BlockList.ELECTRIC_GENERATOR_CONTAINER, ElectricGeneratorScreen::new);
-        ScreenManager.registerFactory(BlockList.POWERBANK_CONTAINER, PowerBankScreen::new);
         ScreenManager.registerFactory(BlockList.ELECTRIC_BLAST_FURNACE_CONTAINER, ElectricBlastFurnaceScreen::new);
     }
 

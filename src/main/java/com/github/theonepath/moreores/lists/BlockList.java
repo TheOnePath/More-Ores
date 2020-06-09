@@ -23,7 +23,9 @@ import com.github.theonepath.moreores.blocks.tileentity.ElectricBlastFurnaceTile
 import com.github.theonepath.moreores.blocks.tileentity.ElectricGeneratorTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
 import com.github.theonepath.moreores.blocks.tileentity.PowerBankTileEntity;
+import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -50,15 +52,6 @@ public class BlockList {
 	@ObjectHolder(id + ":electric_generator")
 	public static ContainerType<ElectricGeneratorContainer> ELECTRIC_GENERATOR_CONTAINER;
 
-	@ObjectHolder(id + ":power_bank")
-	public static PowerBank POWERBANK;
-
-	@ObjectHolder(id + ":power_bank")
-	public static TileEntityType<PowerBankTileEntity> POWERBANK_TILE;
-
-	@ObjectHolder(id + ":power_bank")
-	public static ContainerType<PowerBankContainer> POWERBANK_CONTAINER;
-
 	@ObjectHolder(id + ":electric_blast_furnace")
 	public static ElectricBlastFurnace ELECTRIC_BLAST_FURNACE;
 
@@ -67,6 +60,15 @@ public class BlockList {
 
 	@ObjectHolder(id + ":electric_blast_furnace")
 	public static ContainerType<ElectricBlastFurnaceContainer> ELECTRIC_BLAST_FURNACE_CONTAINER;
+
+	@ObjectHolder(id + ":power_bank")
+	public static PowerBank POWERBANK;
+
+	@ObjectHolder(id + ":power_bank")
+	public static TileEntityType<PowerBankTileEntity> POWERBANK_TILE;
+
+	@ObjectHolder(id + ":power_bank")
+	public static ContainerType<PowerBankContainer> POWERBANK_CONTAINER;
 
 	// Ores
 	@ObjectHolder(id + ":alum_ore")

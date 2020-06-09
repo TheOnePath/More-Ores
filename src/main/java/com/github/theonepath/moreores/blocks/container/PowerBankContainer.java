@@ -1,13 +1,11 @@
 package com.github.theonepath.moreores.blocks.container;
 
 import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
-import com.github.theonepath.moreores.blocks.tileentity.PowerBankTileEntity;
 import com.github.theonepath.moreores.lists.BlockList;
 import com.github.theonepath.moreores.tools.CustomEnergyStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -37,11 +35,10 @@ public class PowerBankContainer extends Container {
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(inventory);
 
-        // Charging slot
         /*tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
             addSlot(new SlotItemHandler(h, 0, 64, 24));
-        });*/
-        layoutPlayerInventorySlots(10, 70);
+        });
+        layoutPlayerInventorySlots(10, 70);*/
 
         trackInt(new IntReferenceHolder() {
             @Override
@@ -62,7 +59,7 @@ public class PowerBankContainer extends Container {
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerEntity, BlockList.POWERBANK);
+        return false;
     }
 
     // Implement this method to move items in and out of the slot for shift-clicking
@@ -76,10 +73,10 @@ public class PowerBankContainer extends Container {
             itemstack = itemstack1.copy();
 
             if (index < GeneratorTileEntity.SIZE) {
-                if (!this.mergeItemStack(itemstack1, PowerBankTileEntity.SIZE, this.inventorySlots.size(), true)) {
+                if (!this.mergeItemStack(itemstack1, GeneratorTileEntity.SIZE, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 0, PowerBankTileEntity.SIZE, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 0, GeneratorTileEntity.SIZE, false)) {
                 return ItemStack.EMPTY;
             }
 

@@ -1,11 +1,10 @@
 package com.github.theonepath.moreores.blocks.tileentity;
 
 import com.github.theonepath.moreores.Config;
-import com.github.theonepath.moreores.blocks.container.PowerBankContainer;
+import com.github.theonepath.moreores.MoreOres;
 import com.github.theonepath.moreores.lists.BlockList;
 import com.github.theonepath.moreores.lists.ItemList;
 import com.github.theonepath.moreores.tools.CustomEnergyStorage;
-import javafx.geometry.Side;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -15,9 +14,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
@@ -31,25 +28,22 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PowerBankTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider, IEnergyStorage {
+public class PowerBankTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
     private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
 
-    public static final int SIZE = 1;
+    // public static final int SIZE = 1;
 
     public PowerBankTileEntity() {
         super(BlockList.POWERBANK_TILE);
-        System.out.println("Power Bank Tile Entity");
     }
 
     @Override
     public void tick() {
-        if (world.isRemote){
-            return;
+        if (!world.isRemote) {
+            sendOutPower();
         }
-
-        sendOutPower();
     }
 
     private void sendOutPower() {
@@ -59,17 +53,25 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
                 for (Direction direction : Direction.values()) {
                     TileEntity tileEntity = world.getTileEntity(pos.offset(direction));
                     if (tileEntity != null) {
+                        if (tileEntity instanceof GeneratorTileEntity || tileEntity instanceof ElectricGeneratorTileEntity) {
+                            return;
+                        }
                         boolean doContinue = tileEntity.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
-                                if (handler.canReceive()) {
-                                    int received = handler.receiveEnergy(Math.min(capacity.get(), Config.POWERBANK_IO.get()), false);
-                                    capacity.addAndGet(-received);
-                                    ((CustomEnergyStorage) energy).consumeEnergy(received);
-                                    markDirty();
-                                    return capacity.get() > 0;
-                                } else {
-                                    return true;
+                            if (handler.canReceive()) {
+                                int received = handler.receiveEnergy(Math.min(capacity.get(), Config.POWERBANK_SEND.get()), false);
+                                if (handler.getEnergyStored() < handler.getMaxEnergyStored()) {
+                                    ((CustomEnergyStorage) handler).addEnergy(received);
                                 }
+
+                                capacity.addAndGet(-received);
+                                ((CustomEnergyStorage) energy).consumeEnergy(received);
+
+                                markDirty();
+                                return capacity.get() > 0;
+                            } else {
+                                return true;
                             }
+                        }
                         ).orElse(true);
                         if (!doContinue) {
                             return;
@@ -80,15 +82,24 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
         });
     }
 
+
     @Override
     public void read(CompoundNBT tag) {
+        CompoundNBT invTag = tag.getCompound("inv");
+        handler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(invTag));
+
         CompoundNBT energyTag = tag.getCompound("energy");
         energy.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(energyTag));
         super.read(tag);
     }
 
+
     @Override
     public CompoundNBT write(CompoundNBT tag) {
+        handler.ifPresent(h -> {
+            CompoundNBT compound = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
+            tag.put("inv", compound);
+        });
         energy.ifPresent(h -> {
             CompoundNBT compound = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
             tag.put("energy", compound);
@@ -96,6 +107,7 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
 
         return super.write(tag);
     }
+
 
     private IItemHandler createHandler() {
         return new ItemStackHandler(1) {
@@ -107,7 +119,7 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
 
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return false;
+                return stack.getItem() == ItemList.COKE;
             }
         };
     }
@@ -115,6 +127,7 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
     private IEnergyStorage createEnergy(){
         return new CustomEnergyStorage(Config.POWERBANK_MAXPOWER.get(), 0);
     }
+
 
     @Nonnull
     @Override
@@ -128,44 +141,14 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
         return super.getCapability(cap, side);
     }
 
-    @Nullable
-    @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity entity) {
-        return new PowerBankContainer(i, world, pos, inventory, entity);
-    }
-
-    @Override
-    public int receiveEnergy(int maxReceive, boolean simulate) {
-        return 0;
-    }
-
-    @Override
-    public int extractEnergy(int maxExtract, boolean simulate) {
-        return 0;
-    }
-
-    @Override
-    public int getEnergyStored() {
-        return getEnergyStored();
-    }
-
-    @Override
-    public int getMaxEnergyStored() {
-        return getMaxEnergyStored();
-    }
-
-    @Override
-    public boolean canExtract() {
-        return false;
-    }
-
-    @Override
-    public boolean canReceive() {
-        return true;
-    }
-
     @Override
     public ITextComponent getDisplayName() {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Container createMenu(int p_createMenu_1_, PlayerInventory p_createMenu_2_, PlayerEntity p_createMenu_3_) {
         return null;
     }
 }
