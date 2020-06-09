@@ -1,8 +1,15 @@
 package com.github.theonepath.moreores.tools;
 
+import com.github.theonepath.moreores.Config;
+import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
+
+import javax.annotation.Nullable;
 
 public class CustomEnergyStorage extends EnergyStorage implements INBTSerializable<CompoundNBT> {
 
@@ -26,6 +33,17 @@ public class CustomEnergyStorage extends EnergyStorage implements INBTSerializab
         if (this.energy < 0) {
             this.energy = 0;
         }
+    }
+
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        return maxReceive;
+
+    }
+    
+    @Override
+    public boolean canReceive() {
+        return getEnergyStored() < getMaxEnergyStored();
     }
 
     @Override
