@@ -10,12 +10,14 @@ import net.minecraft.data.LootTableProvider;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.*;
+import net.minecraft.world.storage.loot.conditions.MatchTool;
 import net.minecraft.world.storage.loot.functions.CopyName;
 import net.minecraft.world.storage.loot.functions.CopyNbt;
 import net.minecraft.world.storage.loot.functions.SetContents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.swing.text.html.HTML;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -65,7 +67,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
     private void writeTables(DirectoryCache cache, Map<ResourceLocation, LootTable> tables) {
         Path outputFolder = this.generator.getOutputFolder();
         tables.forEach((key, lootTable) -> {
-            Path path = outputFolder.resolve("data" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
+            Path path = outputFolder.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
             try {
                 IDataProvider.save(gson, cache, LootTableManager.toJson(lootTable), path);
                 System.out.println("saved successfully");
