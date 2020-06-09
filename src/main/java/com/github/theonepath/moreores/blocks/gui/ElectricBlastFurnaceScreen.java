@@ -28,8 +28,9 @@ public class ElectricBlastFurnaceScreen extends ContainerScreen<ElectricBlastFur
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String s = this.title.getFormattedText();
-        //this.font.drawString(s, (float)(this.xSize / 2 - this.font.getStringWidth(s) / 2), 6.0F, 4210752);
-        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 9.0f, (float)(this.ySize - 108 + 2), 4210752);
+        String energy = "Energy: " + container.getEnergy();
+        //this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 9.0f, (float)(this.ySize - 108 + 2), 4210752);
+        drawString(Minecraft.getInstance().fontRenderer, energy, 9, 6, 0xffffff);
     }
 
     @Override

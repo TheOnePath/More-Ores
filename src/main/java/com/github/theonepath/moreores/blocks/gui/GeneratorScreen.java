@@ -4,9 +4,15 @@ import com.github.theonepath.moreores.blocks.container.GeneratorContainer;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.gui.toasts.IToast;
+import net.minecraft.client.gui.toasts.ToastGui;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.energy.IEnergyStorage;
+
+import java.util.List;
 
 import static com.github.theonepath.moreores.MoreOres.MODID;
 
@@ -25,13 +31,13 @@ public class GeneratorScreen extends ContainerScreen<GeneratorContainer> {
         this.renderHoveredToolTip(mouseX, mouseY);
     }
 
+
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String s = this.title.getFormattedText();
-        String energy = "Energy: " + container.getEnergy();
         this.font.drawString(s, (float)(this.xSize / 2 - this.font.getStringWidth(s) / 2), 6.0F, 4210752);
         this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 9.0f, (float)(this.ySize - 108 + 2), 4210752);
-        drawString(Minecraft.getInstance().fontRenderer, energy, 64 + 28, 29, 0xffffff);
+        drawString(Minecraft.getInstance().fontRenderer, "Energy: " + container.getEnergy(), 64 + 28, 29, 0xffffff);
     }
 
     @Override
