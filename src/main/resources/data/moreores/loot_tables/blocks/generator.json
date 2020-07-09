@@ -2,6 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "name": "generator",
       "rolls": 1,
       "entries": [
         {

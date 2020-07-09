@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "moreores",
+  "pattern": [
+    " g ",
+    "gig",
+    " g "
+  ],
+  "key": {
+    "i": {
+      "item": "moreores:iron_cog"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "moreores:golden_cog"
+  }
+}

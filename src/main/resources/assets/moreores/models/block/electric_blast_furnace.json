@@ -2,11 +2,11 @@
     "parent": "block/cube",
     "textures": {
         "particles": "moreores:blocks/electric_blast_furnace",
-        "down": "moreores:blocks/electric_blast_furnace_side",
-        "up": "moreores:blocks/electric_blast_furnace_side",
-        "east": "moreores:blocks/electric_blast_furnace_side",
-        "west": "moreores:blocks/electric_blast_furnace_side",
+        "down": "moreores:blocks/machine_side",
+        "up": "moreores:blocks/machine_side",
+        "east": "moreores:blocks/machine_side",
+        "west": "moreores:blocks/machine_side",
         "north": "moreores:blocks/electric_blast_furnace_front",
-        "south": "moreores:blocks/electric_blast_furnace_back"
+        "south": "moreores:blocks/machine_back"
     }
 }

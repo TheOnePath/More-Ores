@@ -1,7 +1,6 @@
 package com.github.theonepath.moreores.blocks;
 
 import com.github.theonepath.moreores.blocks.tileentity.ElectricGeneratorTileEntity;
-import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -58,6 +57,16 @@ public class ElectricGenerator extends Block {
             if (rand.nextDouble() < 0.1D) {
                 worldIn.playSound(d0, d1, d2, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
+
+            Direction direction = stateIn.get(FACING);
+            Direction.Axis direction$axis = direction.getAxis();
+
+            double d4 = rand.nextDouble() * 0.6D - 0.3D;
+            double d5 = direction$axis == Direction.Axis.X ? (double)direction.getXOffset() * 0.52D : d4;
+            double d6 = rand.nextDouble() * 6.0D / 16.0D;
+            double d7 = direction$axis == Direction.Axis.Z ? (double)direction.getZOffset() * 0.52D : d4;
+
+            worldIn.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
         }
     }
 

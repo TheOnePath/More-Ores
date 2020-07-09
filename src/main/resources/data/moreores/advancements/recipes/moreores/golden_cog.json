@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "moreores:golden_cog"
+    ]
+  },
+  "criteria": {
+    "iron_cog": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "moreores:iron_cog"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "moreores:golden_cog"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron_cog",
+      "has_the_recipe"
+    ]
+  ]
+}

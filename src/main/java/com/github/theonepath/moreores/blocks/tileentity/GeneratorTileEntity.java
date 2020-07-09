@@ -10,16 +10,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -32,12 +29,9 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.text.DecimalFormat;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.github.theonepath.moreores.Config.GENERATOR_MAXPOWER;
-import static com.github.theonepath.moreores.Config.eGENERATOR_MAXPOWER;
 
 public class GeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
@@ -46,6 +40,7 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
 
     public static final int SIZE = 1;
     private int tickCounter;
+    private boolean isBurning;
 
     public GeneratorTileEntity() {
         super(BlockList.GENERATOR_TILE);
@@ -70,23 +65,25 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
                         ItemStack stack = h.getStackInSlot(0);
                         if (stack.getItem() == ItemList.COKE) {
                             h.extractItem(0, 1, false);
-                            tickCounter = Config.GENERATOR_TICKS.get();
                             markDirty();
+
+                            tickCounter = Config.GENERATOR_TICKS.get();
+                            isBurning = true;
+                        } else {
+                            isBurning = false;
                         }
                     });
                 }
-                if (blockState.get(BlockStateProperties.POWERED) != tickCounter > 0) {
-                    world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, tickCounter > 0), 3);
-                }
+            } else {
+                isBurning = false;
+            }
+
+            if (blockState.get(BlockStateProperties.POWERED) != isBurning) {
+                world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, isBurning), 3);
             }
         });
 
         sendOutPower();
-    }
-
-    private int randomLoss() {
-        float rand = (float)Math.round(Math.random() * 10) / 10;
-        return rand == (int)rand / 0.20 ? 1 : 0;
     }
 
     private void sendOutPower() {
@@ -152,7 +149,6 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
 
     private IItemHandler createHandler() {
         return new ItemStackHandler(1) {
-
             @Override
             protected void onContentsChanged(int slot) {
                 markDirty();
@@ -162,6 +158,7 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 return stack.getItem() == ItemList.COKE;
             }
+
         };
     }
 
@@ -174,11 +171,19 @@ public class GeneratorTileEntity extends TileEntity implements ITickableTileEnti
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            for (Direction direction : Direction.values()) {
+                if (side == direction) {
+                    handler.ifPresent(h -> {
+                        h.extractItem(0, 0, false);
+                    });
+                }
+            }
             return handler.cast();
         }
         if (cap == CapabilityEnergy.ENERGY) {
             return energy.cast();
         }
+
         return super.getCapability(cap, side);
     }
 

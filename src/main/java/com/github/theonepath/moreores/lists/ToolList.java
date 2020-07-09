@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.registries.ObjectHolder;
 
+import javax.tools.Tool;
+
 public class ToolList {
     private static final String id = "moreores";
     private static final ItemGroup group = MoreOres.setup.itemGroup;

@@ -8,7 +8,15 @@
 	"item.moreores.battery": "Battery",
 	"item.moreores.capacitor": "Capacitor",
 	"item.moreores.coke": "Coke",
-	
+	"item.moreores.copper_plate": "Copper Plate",
+	"item.moreores.iron_plate": "Iron Plate",
+	"item.moreores.lead_plate": "Lead Plate",
+
+	"item.moreores.stone_cog": "Stone Cog",
+	"item.moreores.iron_cog": "Iron Cog",
+	"item.moreores.golden_cog": "Golden Cog",
+	"item.moreores.diamond_cog": "Diamond Cog",
+
 	"item.moreores.rock_grinder_stone": "Stone Rock Grinder",
 	"item.moreores.rock_grinder_iron": "Iron Rock Grinder",
 	"item.moreores.rock_grinder_gold": "Golden Rock Grinder",
@@ -80,5 +88,7 @@
 	"block.moreores.generator": "Coke Generator",
 	"block.moreores.electric_generator": "Electric Generator",
 	"block.moreores.power_bank": "Power Bank",
-	"block.moreores.electric_blast_furnace": "Electric Blast Furnace"
+	"block.moreores.electric_blast_furnace": "Electric Blast Furnace",
+	"block.moreores.refinery": "Refinery",
+	"block.moreores.battery_pack": "Battery Pack"
 }

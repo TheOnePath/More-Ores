@@ -167,6 +167,11 @@ public class ElectricGeneratorTileEntity extends TileEntity implements ITickable
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            for (Direction direction : Direction.values()) {
+                if (side == direction) {
+                    return super.getCapability(cap, side);
+                }
+            }
             return handler.cast();
         }
         if (cap == CapabilityEnergy.ENERGY) {

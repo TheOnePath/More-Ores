@@ -12,6 +12,7 @@ import net.minecraftforge.energy.EnergyStorage;
 import javax.annotation.Nullable;
 
 public class CustomEnergyStorage extends EnergyStorage implements INBTSerializable<CompoundNBT> {
+    public static boolean generatorCanReceive = true;
 
     public CustomEnergyStorage(int capacity, int maxTransfer) {
         super(capacity, maxTransfer);

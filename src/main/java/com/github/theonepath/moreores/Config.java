@@ -15,10 +15,12 @@ public class Config {
     public static final String CATEGORY_GENERAL = "general";
     public static final String CATEGORY_POWER = "power";
     public static final String CATEGORY_SMELTING = "Smelting";
+    public static final String CATEGORY_REFINING = "Refining";
     public static final String SUBCATEGORY_GENERATOR = "generator";
     public static final String SUBCATEGORY_eGENERATOR = "electricGenerator";
     public static final String SUBCATEGORY_POWERBANK = "powerBank";
     public static final String SUBCATEGORY_ELECTRIC_BLAST_FURNACE = "electricBlastFurnace";
+    public static final String SUBCATEGORY_REFINERY = "refinery";
 
     private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
@@ -43,6 +45,9 @@ public class Config {
     public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_TICKS;
     public static ForgeConfigSpec.IntValue ELECTRIC_BLAST_FURNACE_CONSUMPTION;
 
+    public static ForgeConfigSpec.IntValue REFINERY_MAXPOWER;
+    public static ForgeConfigSpec.IntValue REFINERY_TICKS;
+    public static ForgeConfigSpec.IntValue REFINERY_CONSUMPTION;
 
     static {
         COMMON_BUILDER.comment("General settings").push(CATEGORY_GENERAL);
@@ -52,6 +57,9 @@ public class Config {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Smelting settings").push(CATEGORY_SMELTING);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("Refining settings").push(CATEGORY_REFINING);
 
         setupGeneratorConfig();
 
@@ -92,9 +100,17 @@ public class Config {
         ELECTRIC_BLAST_FURNACE_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Power Bank")
                 .defineInRange("maxPower", 100000, 0, Integer.MAX_VALUE);
         ELECTRIC_BLAST_FURNACE_TICKS = COMMON_BUILDER.comment("Number of ticks to smelt and item")
-                .defineInRange("ticks", 800, 0, Integer.MAX_VALUE);
+                .defineInRange("ticks", 400, 0, Integer.MAX_VALUE);
         ELECTRIC_BLAST_FURNACE_CONSUMPTION = COMMON_BUILDER.comment("Energy consumption per tick")
-                .defineInRange("consumption", 2, 0, Integer.MAX_VALUE);
+                .defineInRange("consumption", 20, 0, Integer.MAX_VALUE);
+
+        COMMON_BUILDER.comment("Refinery settings").push(SUBCATEGORY_REFINERY);
+        REFINERY_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the Power Bank")
+                .defineInRange("maxPower", 100000, 0, Integer.MAX_VALUE);
+        REFINERY_TICKS = COMMON_BUILDER.comment("Number of ticks to smelt and item")
+                .defineInRange("ticks", 200, 0, Integer.MAX_VALUE);
+        REFINERY_CONSUMPTION = COMMON_BUILDER.comment("Energy consumption per tick")
+                .defineInRange("consumption", 30, 0, Integer.MAX_VALUE);
 
         COMMON_BUILDER.pop();
     }

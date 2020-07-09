@@ -5,7 +5,9 @@ import com.github.theonepath.moreores.lists.BlockList;
 import com.github.theonepath.moreores.tools.CustomEnergyStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.FurnaceResultSlot;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -37,9 +39,9 @@ public class ElectricBlastFurnaceContainer extends Container {
 
         tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
             addSlot(new SlotItemHandler(h, 0, 46, 27));
-            /*addSlot(new SlotItemHandler(h, 1, 53, 7));
-            addSlot(new SlotItemHandler(h, 2, 53, 27));
-            addSlot(new SlotItemHandler(h, 3, 53, 47));*/
+            addSlot(new SlotItemHandler(h, 1, 100, 7));
+            addSlot(new SlotItemHandler(h, 2, 100, 27));
+            addSlot(new SlotItemHandler(h, 3, 100, 47));
         });
         layoutPlayerInventorySlots(10, 70);
 

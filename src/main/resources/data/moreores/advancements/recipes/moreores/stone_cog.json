@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "moreores:stone_cog"
+    ]
+  },
+  "criteria": {
+    "cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:stick"
+          },
+          {
+            "item": "minecraft:cobblestone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "moreores:stone_cog"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

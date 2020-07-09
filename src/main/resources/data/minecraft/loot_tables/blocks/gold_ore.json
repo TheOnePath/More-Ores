@@ -23,19 +23,12 @@
                 "tag": "moreores:tools/rock_grinder"
               }
             }
-          ]
+          ],
+          "weight": 100
         },
 		{
           "type": "minecraft:item",
-          "name": "minecraft:gold_ore",
-		  "conditions": [
-            {
-              "condition": "minecraft:match_tool",
-              "predicate": {
-                "tag": "moreores:tools/pickaxe"
-              }
-            }
-          ]
+          "name": "minecraft:gold_ore"
 		}
       ],
       "conditions": [

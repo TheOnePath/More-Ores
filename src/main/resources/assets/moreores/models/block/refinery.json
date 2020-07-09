@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particles": "moreores:blocks/refinery",
+        "down": "moreores:blocks/machine_side",
+        "up": "moreores:blocks/machine_side",
+        "east": "moreores:blocks/machine_side",
+        "west": "moreores:blocks/machine_side",
+        "north": "moreores:blocks/refinery_front",
+        "south": "moreores:blocks/machine_back"
+    }
+}

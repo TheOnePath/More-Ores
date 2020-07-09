@@ -2,6 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "name": "electric_generator",
       "rolls": 1,
       "entries": [
         {

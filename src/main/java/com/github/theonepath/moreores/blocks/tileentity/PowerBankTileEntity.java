@@ -1,9 +1,7 @@
 package com.github.theonepath.moreores.blocks.tileentity;
 
 import com.github.theonepath.moreores.Config;
-import com.github.theonepath.moreores.MoreOres;
 import com.github.theonepath.moreores.lists.BlockList;
-import com.github.theonepath.moreores.lists.ItemList;
 import com.github.theonepath.moreores.tools.CustomEnergyStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -119,7 +117,7 @@ public class PowerBankTileEntity extends TileEntity implements ITickableTileEnti
 
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return stack.getItem() == ItemList.COKE;
+                return false;
             }
         };
     }

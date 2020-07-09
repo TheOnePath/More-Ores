@@ -14,10 +14,6 @@ public class RockGrinderUnbreakable extends PickaxeItem {
 		setRegistryName("rock_grinder_unbreakable");
   	}
 
-  
-	public ActionResultType onItemUse() { return ActionResultType.SUCCESS; }
-
-  
 	public boolean hasContainerItem(ItemStack item) { return true; }
 
   

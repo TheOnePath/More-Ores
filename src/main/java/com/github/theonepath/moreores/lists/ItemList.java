@@ -7,8 +7,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ObjectHolder;
 
-import java.util.Objects;
-
 public class ItemList {
     private static final String id = "moreores";
     private static final ItemGroup group = MoreOres.setup.itemGroup;
@@ -24,6 +22,24 @@ public class ItemList {
 
     @ObjectHolder(id + ":copper_plate")
     public static Item COPPER_PLATE = new Item(new Item.Properties().group(group)).setRegistryName("copper_plate");
+
+    @ObjectHolder(id + ":iron_plate")
+    public static Item IRON_PLATE = new Item(new Item.Properties().group(group)).setRegistryName("iron_plate");
+
+    @ObjectHolder(id + ":iron_plate")
+    public static Item LEAD_PLATE = new Item(new Item.Properties().group(group)).setRegistryName("lead_plate");
+
+    @ObjectHolder(id + ":iron_plate")
+    public static Item STONE_COG = new Item(new Item.Properties().group(group)).setRegistryName("stone_cog");
+
+    @ObjectHolder(id + ":iron_plate")
+    public static Item IRON_COG = new Item(new Item.Properties().group(group)).setRegistryName("iron_cog");
+
+    @ObjectHolder(id + ":iron_plate")
+    public static Item GOLDEN_COG = new Item(new Item.Properties().group(group)).setRegistryName("golden_cog");
+
+    @ObjectHolder(id + ":iron_plate")
+    public static Item DIAMOND_COG = new Item(new Item.Properties().group(group)).setRegistryName("diamond_cog");
 
 
     // Ingots

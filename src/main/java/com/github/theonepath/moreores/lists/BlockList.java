@@ -1,31 +1,11 @@
 package com.github.theonepath.moreores.lists;
 
-import com.github.theonepath.moreores.blocks.ElectricBlastFurnace;
-import com.github.theonepath.moreores.blocks.ElectricGenerator;
-import com.github.theonepath.moreores.blocks.Generator;
-import com.github.theonepath.moreores.blocks.PowerBank;
-import com.github.theonepath.moreores.blocks.container.ElectricBlastFurnaceContainer;
-import com.github.theonepath.moreores.blocks.container.ElectricGeneratorContainer;
-import com.github.theonepath.moreores.blocks.container.GeneratorContainer;
-import com.github.theonepath.moreores.blocks.container.PowerBankContainer;
-import com.github.theonepath.moreores.blocks.metals.AlumBlock;
-import com.github.theonepath.moreores.blocks.metals.AlumBrassBlock;
-import com.github.theonepath.moreores.blocks.metals.BrassBlock;
-import com.github.theonepath.moreores.blocks.metals.BronzeBlock;
-import com.github.theonepath.moreores.blocks.metals.CopperBlock;
-import com.github.theonepath.moreores.blocks.metals.LeadBlock;
-import com.github.theonepath.moreores.blocks.metals.NickelBlock;
-import com.github.theonepath.moreores.blocks.metals.SilverBlock;
-import com.github.theonepath.moreores.blocks.metals.TinBlock;
-import com.github.theonepath.moreores.blocks.metals.ZincBlock;
+import com.github.theonepath.moreores.blocks.*;
+import com.github.theonepath.moreores.blocks.container.*;
+import com.github.theonepath.moreores.blocks.metals.*;
 import com.github.theonepath.moreores.blocks.ores.*;
-import com.github.theonepath.moreores.blocks.tileentity.ElectricBlastFurnaceTileEntity;
-import com.github.theonepath.moreores.blocks.tileentity.ElectricGeneratorTileEntity;
-import com.github.theonepath.moreores.blocks.tileentity.GeneratorTileEntity;
-import com.github.theonepath.moreores.blocks.tileentity.PowerBankTileEntity;
-import net.minecraft.block.Block;
+import com.github.theonepath.moreores.blocks.tileentity.*;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -70,6 +50,18 @@ public class BlockList {
 	@ObjectHolder(id + ":power_bank")
 	public static ContainerType<PowerBankContainer> POWERBANK_CONTAINER;
 
+	@ObjectHolder(id + ":refinery")
+	public static Refinery REFINERY;
+
+	@ObjectHolder(id + ":refinery")
+	public static TileEntityType<RefineryTileEntity> REFINERY_TILE;
+
+	@ObjectHolder(id + ":refinery")
+	public static ContainerType<RefineryContainer> REFINERY_CONTAINER;
+
+	@ObjectHolder(id + ":battery_pack")
+	public static BatteryPack BATTERY_PACK;
+
 	// Ores
 	@ObjectHolder(id + ":alum_ore")
 	public static AlumOre ALUM_ORE;
@@ -92,7 +84,7 @@ public class BlockList {
 	@ObjectHolder(id + ":zinc_ore")
 	public static ZincOre ZINC_ORE;
 
-	// Blocks
+	// Metal Blocks
 	@ObjectHolder(id + ":alum_block")
 	public static AlumBlock ALUM_BLOCK;
 
