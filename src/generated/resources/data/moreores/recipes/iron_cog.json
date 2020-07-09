@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "moreores",
+  "pattern": [
+    " i ",
+    "isi",
+    " i "
+  ],
+  "key": {
+    "s": {
+      "item": "moreores:stone_cog"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "moreores:iron_cog"
+  }
+}

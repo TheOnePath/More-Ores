@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "moreores:power_bank"
+    ]
+  },
+  "criteria": {
+    "battery_pack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "moreores:battery_pack"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "moreores:power_bank"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "battery_pack",
+      "has_the_recipe"
+    ]
+  ]
+}

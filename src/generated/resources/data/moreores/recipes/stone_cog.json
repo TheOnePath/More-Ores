@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "moreores",
+  "pattern": [
+    "scs",
+    "c c",
+    "scs"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "c": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "item": "moreores:stone_cog"
+  }
+}

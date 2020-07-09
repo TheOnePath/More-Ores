@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "moreores",
+  "pattern": [
+    "iii",
+    "bbb",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "moreores:iron_plate"
+    },
+    "b": {
+      "item": "moreores:battery_pack"
+    }
+  },
+  "result": {
+    "item": "moreores:power_bank"
+  }
+}
